@@ -11,6 +11,7 @@
 ## Recent Digests
 | Date | Type | Key Topics |
 |------|------|------------|
+| 2026-05-12 | HN front page | supply-chain, open-source, AI-tooling |
 
 ## Skills Built
 | Skill | Date | Notes |
