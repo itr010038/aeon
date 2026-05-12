@@ -34,6 +34,10 @@ tmp_*
 .*-msg.txt
 *_msg.txt
 *_raw.txt
+*_log.txt
+.cg_*.json
+token_movers.*
+.token_movers*
 
 # Leaked creds scratch
 .xai_key
