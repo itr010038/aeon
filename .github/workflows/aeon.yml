@@ -330,18 +330,20 @@ jobs:
             while IFS= read -r TG_CHUNK_B64; do
               [ -z "$TG_CHUNK_B64" ] && continue
               TG_MSG=$(printf '%s' "$TG_CHUNK_B64" | base64 -d)
-              TG_RESULT=$(curl -s -w "\n%{http_code}" -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
-                -H "Content-Type: application/json" \
-                -d "$(jq -n --arg chat "$TELEGRAM_CHAT_ID" --arg text "$TG_MSG" '{chat_id: $chat, text: $text, parse_mode: "Markdown"}')" 2>/dev/null) || true
-              TG_HTTP=$(echo "$TG_RESULT" | tail -1)
-              TG_OK=$(echo "$TG_RESULT" | sed '$d' | jq -r '.ok // false' 2>/dev/null || echo "false")
-              if [ "$TG_HTTP" = "200" ] && [ "$TG_OK" = "true" ]; then
-                DELIVERED=true
-              else
-                curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+              for TG_CID in $TELEGRAM_CHAT_ID; do
+                TG_RESULT=$(curl -s -w "\n%{http_code}" -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
                   -H "Content-Type: application/json" \
-                  -d "$(jq -n --arg chat "$TELEGRAM_CHAT_ID" --arg text "$TG_MSG" '{chat_id: $chat, text: $text}')" > /dev/null 2>&1 && DELIVERED=true || true
-              fi
+                  -d "$(jq -n --arg chat "$TG_CID" --arg text "$TG_MSG" '{chat_id: $chat, text: $text, parse_mode: "Markdown"}')" 2>/dev/null) || true
+                TG_HTTP=$(echo "$TG_RESULT" | tail -1)
+                TG_OK=$(echo "$TG_RESULT" | sed '$d' | jq -r '.ok // false' 2>/dev/null || echo "false")
+                if [ "$TG_HTTP" = "200" ] && [ "$TG_OK" = "true" ]; then
+                  DELIVERED=true
+                else
+                  curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+                    -H "Content-Type: application/json" \
+                    -d "$(jq -n --arg chat "$TG_CID" --arg text "$TG_MSG" '{chat_id: $chat, text: $text}')" > /dev/null 2>&1 && DELIVERED=true || true
+                fi
+              done
               # Preserve chunk ordering in the Telegram channel
               sleep 0.3
             done <<< "$TG_CHUNKS_B64"
@@ -665,9 +667,11 @@ jobs:
             if [ -n "${TELEGRAM_BOT_TOKEN:-}" ] && [ -n "${TELEGRAM_CHAT_ID:-}" ]; then
               TG_MSG="$MSG"
               [ ${#TG_MSG} -gt 4000 ] && TG_MSG="${TG_MSG:0:3990}...(truncated)"
-              curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
-                -H "Content-Type: application/json" \
-                -d "$(jq -n --arg chat "$TELEGRAM_CHAT_ID" --arg text "$TG_MSG" '{chat_id: $chat, text: $text}')" > /dev/null 2>&1 || true
+              for TG_CID in $TELEGRAM_CHAT_ID; do
+                curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+                  -H "Content-Type: application/json" \
+                  -d "$(jq -n --arg chat "$TG_CID" --arg text "$TG_MSG" '{chat_id: $chat, text: $text}')" > /dev/null 2>&1 || true
+              done
             fi
             # Discord
             if [ -n "${DISCORD_WEBHOOK_URL:-}" ]; then
