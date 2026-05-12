@@ -488,7 +488,11 @@ jobs:
               CHAT=$(echo "$RESPONSE" | jq -r ".result[$i].message.chat.id // empty")
               UPDATE_ID=$(echo "$RESPONSE" | jq -r ".result[$i].update_id // empty")
 
-              if [ -n "$TEXT" ] && [ "$CHAT" = "$TELEGRAM_CHAT_ID" ]; then
+              CHAT_ALLOWED=false
+              for TG_CID in $TELEGRAM_CHAT_ID; do
+                [ "$CHAT" = "$TG_CID" ] && CHAT_ALLOWED=true && break
+              done
+              if [ -n "$TEXT" ] && [ "$CHAT_ALLOWED" = "true" ]; then
                 MESSAGES=$(echo "$MESSAGES" | jq --arg src "telegram" --arg txt "$TEXT" '. + [{source: $src, text: $txt}]')
                 echo "Telegram: $TEXT"
               fi
