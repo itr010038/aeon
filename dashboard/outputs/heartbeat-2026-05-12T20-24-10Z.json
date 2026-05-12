@@ -1,0 +1,242 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "heartbeat"
+      },
+      "children": [
+        "alert",
+        "separator1",
+        "skills_section",
+        "separator2",
+        "token_movers",
+        "separator3",
+        "status_section"
+      ]
+    },
+    "alert": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "WATCH",
+        "message": "9 enabled skills have no entry in cron-state.json"
+      }
+    },
+    "separator1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "skills_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "skills_heading",
+        "skills_list"
+      ]
+    },
+    "skills_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Skills with no cron-state.json entry",
+        "level": "h3"
+      }
+    },
+    "skills_list": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "skill1",
+        "skill2",
+        "skill3",
+        "skill4",
+        "skill5",
+        "skill6",
+        "skill7",
+        "skill8",
+        "skill9"
+      ]
+    },
+    "skill1": {
+      "type": "Badge",
+      "props": {
+        "text": "token-alert"
+      }
+    },
+    "skill2": {
+      "type": "Badge",
+      "props": {
+        "text": "token-pick"
+      }
+    },
+    "skill3": {
+      "type": "Badge",
+      "props": {
+        "text": "token-report"
+      }
+    },
+    "skill4": {
+      "type": "Badge",
+      "props": {
+        "text": "market-context-refresh"
+      }
+    },
+    "skill5": {
+      "type": "Badge",
+      "props": {
+        "text": "narrative-tracker"
+      }
+    },
+    "skill6": {
+      "type": "Badge",
+      "props": {
+        "text": "polymarket-comments"
+      }
+    },
+    "skill7": {
+      "type": "Badge",
+      "props": {
+        "text": "monitor-polymarket"
+      }
+    },
+    "skill8": {
+      "type": "Badge",
+      "props": {
+        "text": "unlock-monitor"
+      }
+    },
+    "skill9": {
+      "type": "Badge",
+      "props": {
+        "text": "heartbeat"
+      }
+    },
+    "separator2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "token_movers": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "tm_heading",
+        "tm_stats"
+      ]
+    },
+    "tm_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "token-movers",
+        "level": "h3"
+      }
+    },
+    "tm_stats": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "lg"
+      },
+      "children": [
+        "tm_success_rate",
+        "tm_total_runs"
+      ]
+    },
+    "tm_success_rate": {
+      "type": "Stat",
+      "props": {
+        "label": "Success rate",
+        "value": "50%"
+      }
+    },
+    "tm_total_runs": {
+      "type": "Stat",
+      "props": {
+        "label": "Total runs",
+        "value": "2"
+      }
+    },
+    "separator3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "status_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "status_heading",
+        "status_observations"
+      ]
+    },
+    "status_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Status",
+        "level": "h3"
+      }
+    },
+    "status_observations": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "obs1",
+        "obs2",
+        "obs3",
+        "obs4",
+        "obs5"
+      ]
+    },
+    "obs1": {
+      "type": "Text",
+      "props": {
+        "text": "State file looks fresh"
+      }
+    },
+    "obs2": {
+      "type": "Text",
+      "props": {
+        "text": "Likely scheduler just initialized or skills are queued but haven't dispatched yet"
+      }
+    },
+    "obs3": {
+      "type": "Text",
+      "props": {
+        "text": "No failed/stuck skills"
+      }
+    },
+    "obs4": {
+      "type": "Text",
+      "props": {
+        "text": "No open PRs/issues"
+      }
+    },
+    "obs5": {
+      "type": "Text",
+      "props": {
+        "text": "Status page updated"
+      }
+    }
+  }
+}
