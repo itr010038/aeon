@@ -46,7 +46,7 @@ skills:
   polymarket-comments: { enabled: true, schedule: "0 13 * * *" } # top comments from trending Polymarket markets
   unlock-monitor: { enabled: true, schedule: "0 10 * * 1" } # weekly token unlock/vesting tracker
 
-  research-feed-writer: { enabled: true, schedule: "0 14 * * *", model: "claude-sonnet-4-6" } # reads token-movers + narrative-tracker logs, writes research-feed.json for spot-HTF agent
+  research-feed-writer: { enabled: true, schedule: "45 13 * * *", model: "claude-sonnet-4-6" } # reads token-movers + narrative-tracker logs, writes research-feed.json for spot-HTF agent
 
   # --- Afternoon (2 PM UTC) ---
   article: { enabled: false, schedule: "0 14 * * *" }
