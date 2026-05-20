@@ -108,16 +108,16 @@ skills:
 
   # --- Evening / meta (6 PM UTC) ---
   goal-tracker: { enabled: false, schedule: "0 18 * * *" }
-  skill-health: { enabled: false, schedule: "0 18 * * *" }
+  skill-health: { enabled: true, schedule: "0 18 * * *" }
   skill-analytics: { enabled: false, schedule: "30 18 * * 3", model: "claude-sonnet-4-6" } # Wednesday — fleet-level skill-run analytics: ranked run counts, exit-taxonomy distribution, anomaly flags (significance-gated)
 
-  self-improve: { enabled: false, schedule: "0 18 1/2 * *" } # every other day — improve agent skills/prompts/config
+  self-improve: { enabled: true, schedule: "0 18 1/2 * *" } # every other day — improve agent skills/prompts/config
   reflect: { enabled: false, schedule: "0 18 * * *" }
 
   action-converter: { enabled: false, schedule: "0 18 * * *" }
   startup-idea: { enabled: false, schedule: "0 18 * * *" }
   tool-builder: { enabled: false, schedule: "reactive", var: "" } # reactive — build automation scripts from recurring tasks
-  skill-repair: { enabled: false, schedule: "reactive", var: "" } # reactive — auto-fix failing skills
+  skill-repair: { enabled: true, schedule: "reactive", var: "" } # reactive — auto-fix failing skills
   evening-recap: { enabled: false, schedule: "0 21 * * *", model: "claude-sonnet-4-6" } # end-of-day ops summary
   vercel-projects: { enabled: false, schedule: "0 18 * * 0", model: "claude-sonnet-4-6", var: "" } # Sunday — catalog Vercel projects
 
