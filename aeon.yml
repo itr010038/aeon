@@ -47,6 +47,7 @@ skills:
   unlock-monitor: { enabled: true, schedule: "0 10 * * 1" } # weekly token unlock/vesting tracker
 
   research-feed-writer: { enabled: true, schedule: "45 13 * * *", model: "claude-sonnet-4-6" } # reads token-movers + narrative-tracker logs, writes research-feed.json for spot-HTF agent
+  meme-context-writer: { enabled: true, schedule: "0 14 * * *", model: "claude-sonnet-4-6" } # reads token-movers + narrative-tracker logs, writes meme-context.json for meme coin trading agent
 
   # --- Afternoon (2 PM UTC) ---
   article: { enabled: false, schedule: "0 14 * * *" }
