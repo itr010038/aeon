@@ -1,0 +1,44 @@
+# memory/on-chain-watches.yml
+# Wallets and contracts Aeon monitors for large on-chain moves.
+#
+# How to add a smart money wallet:
+#   1. Find profitable wallets on GMGN: gmgn-cli track smart-money --chain base
+#   2. Verify the address on Basescan: https://basescan.org/address/0x...
+#   3. Copy the address into a new entry below
+#   4. Commit and push — Aeon picks it up on the next run
+#
+# threshold_usd: minimum USD transfer size to alert on (default 1000)
+# type: wallet (tracks all transfers in/out) | contract (tracks event logs)
+
+watches:
+  # ── YOUR WALLET ──────────────────────────────────────────────────────
+  # Add your own Base trading wallet here to get alerted on large moves
+  # - label: My Base Wallet
+  #   address: "0x_YOUR_ADDRESS_HERE"
+  #   chain: base
+  #   type: wallet
+  #   threshold_usd: 500
+
+  # ── SMART MONEY SLOTS ────────────────────────────────────────────────
+  # Paste wallets you find via: gmgn-cli track smart-money --chain base
+  # These are wallets with proven profitable history on Base meme coins
+  #
+  # - label: Smart Money #1
+  #   address: "0x_PASTE_ADDRESS_HERE"
+  #   chain: base
+  #   type: wallet
+  #   threshold_usd: 1000
+  #
+  # - label: Smart Money #2
+  #   address: "0x_PASTE_ADDRESS_HERE"
+  #   chain: base
+  #   type: wallet
+  #   threshold_usd: 1000
+
+  # ── AERODROME (Base DEX — largest DEX on Base) ────────────────────────
+  # Watching the main Aerodrome router shows large swaps happening on Base
+  - label: Aerodrome Router
+    address: "0xcF77a3Ba9A5CA399B7c97c74d54e5b1Beb874E43"
+    chain: base
+    type: contract
+    threshold_usd: 50000   # only alert on very large swaps ($50K+)

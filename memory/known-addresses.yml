@@ -1,0 +1,28 @@
+# memory/known-addresses.yml
+# Maps raw wallet addresses to human-readable labels.
+# Used by on-chain-monitor to humanize alert messages.
+# Add any address you want labeled — lowercase keys.
+
+labels:
+  # ── BURN / MINT ──────────────────────────────────────────────────────
+  "0x0000000000000000000000000000000000000000": "Zero (mint/burn)"
+  "0x000000000000000000000000000000000000dead": "Dead wallet (burn)"
+
+  # ── CENTRALIZED EXCHANGES ────────────────────────────────────────────
+  "0x28c6c06298d514db089934071355e5743bf21d60": "Binance 14"
+  "0x21a31ee1afc51d94c2efccaa2092ad1028285549": "Binance 15"
+  "0xa9d1e08c7793af67e9d92fe308d5697fb81d3e43": "Coinbase 10"
+  "0x71660c4005ba85c37ccec55d0c4493e66fe775d3": "Coinbase 1"
+  "0x503828976d22510aad0201ac7ec88293211d23da": "Coinbase 2"
+  "0x3cd751e6b0078be393132286c442345e5dc49699": "Coinbase 3"
+  "0x77696bb39917c91a0c3908d577d5e322095425ca": "Coinbase 4"
+
+  # ── BASE CHAIN DEX / INFRA ───────────────────────────────────────────
+  "0xcf77a3ba9a5ca399b7c97c74d54e5b1beb874e43": "Aerodrome Router (Base)"
+  "0x2626664c2603336e57b271c5c0b26f421741e481": "Uniswap V3 Router (Base)"
+  "0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24": "Uniswap V2 Router (Base)"
+  "0xe592427a0aece92de3edee1f18e0157c05861564": "Uniswap V3 Router (ETH)"
+
+  # ── BASE CHAIN BRIDGES ───────────────────────────────────────────────
+  "0x3154cf16ccdb4c6d922629664174b904d80f2c35": "Base Bridge (official)"
+  "0x49048044d57e1c92a77f79988d21fa8faf74e97e": "Base Portal"

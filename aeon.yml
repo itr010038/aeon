@@ -29,7 +29,7 @@ skills:
   # --- Midday (12 PM UTC) ---
   token-alert: { enabled: true, schedule: "0 8 * * *" }
   token-movers: { enabled: true, schedule: "0 8 * * *" }
-  on-chain-monitor: { enabled: false, schedule: "0 12 * * *" }
+  on-chain-monitor: { enabled: true, schedule: "0 12 * * *" }
   defi-monitor: { enabled: false, schedule: "0 12 * * *" }
   treasury-info: { enabled: false, schedule: "0 12 * * *" }
   distribute-tokens: { enabled: false, schedule: "workflow_dispatch", var: "" } # on-demand — var: distribution list label
@@ -119,7 +119,7 @@ skills:
   startup-idea: { enabled: false, schedule: "0 18 * * *" }
   tool-builder: { enabled: false, schedule: "reactive", var: "" } # reactive — build automation scripts from recurring tasks
   skill-repair: { enabled: true, schedule: "reactive", var: "" } # reactive — auto-fix failing skills
-  evening-recap: { enabled: false, schedule: "0 21 * * *", model: "claude-sonnet-4-6" } # end-of-day ops summary
+  evening-recap: { enabled: true, schedule: "0 21 * * *", model: "claude-sonnet-4-6" } # end-of-day ops summary
   vercel-projects: { enabled: false, schedule: "0 18 * * 0", model: "claude-sonnet-4-6", var: "" } # Sunday — catalog Vercel projects
 
   # --- Cost tracking (Monday 7 AM UTC, weekly) ---
