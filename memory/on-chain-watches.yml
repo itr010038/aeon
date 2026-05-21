@@ -1,44 +1,61 @@
 # memory/on-chain-watches.yml
 # Wallets and contracts Aeon monitors for large on-chain moves.
-#
-# How to add a smart money wallet:
-#   1. Find profitable wallets on GMGN: gmgn-cli track smart-money --chain base
-#   2. Verify the address on Basescan: https://basescan.org/address/0x...
-#   3. Copy the address into a new entry below
-#   4. Commit and push — Aeon picks it up on the next run
+# Alerts fire at 5:00 AM LA (12:00 UTC) daily.
 #
 # threshold_usd: minimum USD transfer size to alert on (default 1000)
 # type: wallet (tracks all transfers in/out) | contract (tracks event logs)
 
 watches:
+
   # ── YOUR WALLET ──────────────────────────────────────────────────────
-  # Add your own Base trading wallet here to get alerted on large moves
-  # - label: My Base Wallet
-  #   address: "0x_YOUR_ADDRESS_HERE"
-  #   chain: base
-  #   type: wallet
-  #   threshold_usd: 500
+  - label: My Base Wallet
+    address: "0xA0DD2eb7BD92133a3C13edE215C2A4311B85f7aA"
+    chain: base
+    type: wallet
+    threshold_usd: 500
 
-  # ── SMART MONEY SLOTS ────────────────────────────────────────────────
-  # Paste wallets you find via: gmgn-cli track smart-money --chain base
-  # These are wallets with proven profitable history on Base meme coins
-  #
-  # - label: Smart Money #1
-  #   address: "0x_PASTE_ADDRESS_HERE"
-  #   chain: base
-  #   type: wallet
-  #   threshold_usd: 1000
-  #
-  # - label: Smart Money #2
-  #   address: "0x_PASTE_ADDRESS_HERE"
-  #   chain: base
-  #   type: wallet
-  #   threshold_usd: 1000
+  # ── SMART MONEY (Base) ───────────────────────────────────────────────
+  # Sourced from gmgn-cli track smartmoney --chain base
+  # Tags: bluechip_owner + smart_degen — highest volume in last 50 trades
+  - label: Smart Money #1 (bluechip+snipe)
+    address: "0x000461a73d3985eef4923655782aa5d0de75c111"
+    chain: base
+    type: wallet
+    threshold_usd: 1000
 
-  # ── AERODROME (Base DEX — largest DEX on Base) ────────────────────────
-  # Watching the main Aerodrome router shows large swaps happening on Base
+  # smart_degen, active across multiple Base meme tokens
+  - label: Smart Money #2 (smart_degen)
+    address: "0x2baf976d2e18324734ae7afe8e30f278d9df9324"
+    chain: base
+    type: wallet
+    threshold_usd: 1000
+
+  # ── KOL WALLETS (Base) ───────────────────────────────────────────────
+  # Sourced from gmgn-cli track kol --chain base
+  # KOLs move first — their buys often precede community pumps
+
+  - label: KOL NotVanGogh88
+    address: "0x04b436555dc69ea4bf8ba50d8c591e60443b3ff9"
+    chain: base
+    type: wallet
+    threshold_usd: 500
+
+  - label: KOL judthedev
+    address: "0x4d68d0ebc52ce41f2ed057f926960df89b0455f9"
+    chain: base
+    type: wallet
+    threshold_usd: 500
+
+  - label: KOL Dodseven77
+    address: "0x49b3e70dfc8b18654f5335532c17406794ac5ddd"
+    chain: base
+    type: wallet
+    threshold_usd: 500
+
+  # ── AERODROME (Base DEX) ─────────────────────────────────────────────
+  # Alerts on large swaps ($50K+) through the biggest DEX on Base
   - label: Aerodrome Router
     address: "0xcF77a3Ba9A5CA399B7c97c74d54e5b1Beb874E43"
     chain: base
     type: contract
-    threshold_usd: 50000   # only alert on very large swaps ($50K+)
+    threshold_usd: 50000
