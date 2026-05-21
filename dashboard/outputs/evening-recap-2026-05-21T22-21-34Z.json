@@ -1,0 +1,81 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "Evening Recap"
+      },
+      "children": [
+        "main_stack"
+      ]
+    },
+    "main_stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "date_text",
+        "status_text",
+        "separator",
+        "sources_section"
+      ]
+    },
+    "date_text": {
+      "type": "Text",
+      "props": {
+        "text": "2026-05-21",
+        "variant": "muted"
+      }
+    },
+    "status_text": {
+      "type": "Text",
+      "props": {
+        "text": "Quiet day, no activity recorded",
+        "variant": "body"
+      }
+    },
+    "separator": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "sources_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "sources_label",
+        "log_status",
+        "cron_status"
+      ]
+    },
+    "sources_label": {
+      "type": "Text",
+      "props": {
+        "text": "Sources",
+        "variant": "caption"
+      }
+    },
+    "log_status": {
+      "type": "Text",
+      "props": {
+        "text": "log=missing",
+        "variant": "caption"
+      }
+    },
+    "cron_status": {
+      "type": "Text",
+      "props": {
+        "text": "cron-state=ok",
+        "variant": "caption"
+      }
+    }
+  }
+}
